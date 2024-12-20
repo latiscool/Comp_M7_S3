@@ -1,0 +1,51 @@
+CONFIGURANDO PROYECTO DJANGO CON DB POSTGRESQL
+=============================================
+ psql
+ 	Server [localhost]: ENTER
+	Database [postgres]:ENTER
+	Port [5432]:ENTER
+	Username [postgres]:ENTER
+	Contraseña para usuario postgres: postgresql
+
+	CREATE DATABASE db_practica_orm;
+	CREATE USER user_db WITH PASSWORD 'user_db';
+	ALTER ROLE Usario_DB SET default_transaction_isolation TO 'read committed';
+	ALTER ROLE Usario_DB SET timezone TO 'UTC'
+	
+CAMBIO BASE DB	
+	\c db_practica_orm;
+GRANT ALL PRIVILEGES ON SCHEMA public TO user_db;
+ALTER ROLE user_db SET search_path TO public;
+	
+PASOS CREAR ENTORNO
+=====================
+	mkvirtualenv practica_orm_django
+	workon practica_orm_django
+	--
+    pip install django
+    --
+    django-admin startproject config . (era nombre carpera raiz practica_orm, pero config es valido)
+    python manage.py startapp practica_orm_django (no era necesario, pero afecta proyecto)
+     
+
+DJANGO CONECTAR POSTGRESQL
+==========================
+
+     	pip install psycopg2
+     	  python manage.py migrate
+     	  	 python manage.py createsuperuser
+     	  	  	Cambiar la configuración de la base de datos para utilizar PostgreSQL, en lugar de SQLite en settings.py, dentro de nuestro proyecto
+
+	     DATABASES = {
+			    "default": {
+			        "ENGINE": "django.db.backends.postgresql",
+			        "NAME": "Nombre_DB",
+			        "USER": "Usuario_DB",
+			        "PASSWORD": "Clave_DV",
+			        "HOST": "localhost",
+			        "PORT": "5432",
+			    }
+			}
+
+python manage.py makemigrations
+python manage.py makemigrate
