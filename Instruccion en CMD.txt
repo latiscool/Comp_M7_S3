@@ -25,7 +25,7 @@ PASOS CREAR ENTORNO
     pip install django
     --
     django-admin startproject config . (era nombre carpera raiz practica_orm, pero config es valido)
-    python manage.py startapp practica_orm_django (no era necesario, pero afecta proyecto)
+    python manage.py startapp practica_orm_django (no era necesario, pero no afecta proyecto)
      
 
 DJANGO CONECTAR POSTGRESQL
