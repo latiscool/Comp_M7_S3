@@ -9,8 +9,8 @@ CONFIGURANDO PROYECTO DJANGO CON DB POSTGRESQL
 
 	CREATE DATABASE db_practica_orm;
 	CREATE USER user_db WITH PASSWORD 'user_db';
-	ALTER ROLE Usario_DB SET default_transaction_isolation TO 'read committed';
-	ALTER ROLE Usario_DB SET timezone TO 'UTC'
+	ALTER ROLE user_db SET default_transaction_isolation TO 'read committed';
+	ALTER ROLE user_db SET timezone TO 'UTC';
 	
 CAMBIO BASE DB	
 	\c db_practica_orm;
@@ -24,8 +24,8 @@ PASOS CREAR ENTORNO
 	--
     pip install django
     --
-    django-admin startproject config . (era nombre carpera raiz practica_orm, pero config es valido)
-    python manage.py startapp practica_orm_django (no era necesario, pero no afecta proyecto)
+    django-admin startproject practica_orm .
+    python manage.py startapp practica_orm_django (en caso de solicita crear una app)
      
 
 DJANGO CONECTAR POSTGRESQL
@@ -39,9 +39,9 @@ DJANGO CONECTAR POSTGRESQL
 	     DATABASES = {
 			    "default": {
 			        "ENGINE": "django.db.backends.postgresql",
-			        "NAME": "Nombre_DB",
-			        "USER": "Usuario_DB",
-			        "PASSWORD": "Clave_DV",
+			        "NAME": "db_practica_orm",
+			        "USER": "user_db",
+			        "PASSWORD": "user_db",
 			        "HOST": "localhost",
 			        "PORT": "5432",
 			    }
